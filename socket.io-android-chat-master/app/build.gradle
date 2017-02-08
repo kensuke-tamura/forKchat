@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+    }
+}
+apply plugin: 'com.android.application'
+
+repositories {
+    jcenter()
+}
+
+// For socket.io
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+    defaultConfig {
+        applicationId 'com.github.nkzawa.socketio.androidchat'
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+// For pusher
+repositories {
+    maven { url 'http://clojars.org/repo' }
+}
+// For pusher
+dependencies {
+    compile 'com.pusher:pusher-java-client:1.0.0'
+    compile 'com.loopj.android:android-async-http:1.4.9' // for our HTTP requests later
+    compile 'com.google.code.gson:gson:2.2.4' // for parsing JSON
+    compile 'com.squareup.picasso:picasso:2.1.1' // for image rendering
+}
+// For socket.io
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.0.+'
+    compile 'com.android.support:recyclerview-v7:21.0.+'
+    compile ('io.socket:socket.io-client:0.8.1') {
+        exclude group: 'org.json', module: 'json'
+    }
+}
