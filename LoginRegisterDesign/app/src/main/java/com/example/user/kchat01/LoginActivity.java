@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                             .create()
                             .show();
                 } else {
-                //in actual application, these variables are sent to the server
+                //in actual application, these variables are sent to the server and store in DB
                     Log.i("username", username);
                     Log.i("password", password);
                 }
